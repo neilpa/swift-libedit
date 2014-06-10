@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D8B19CF31946F8D000664B90 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B19CF21946F8D000664B90 /* main.swift */; };
+		D8B19D031946FB8700664B90 /* Prompt.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B19D021946FB8700664B90 /* Prompt.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,9 @@
 /* Begin PBXFileReference section */
 		D8B19CEF1946F8D000664B90 /* swift-libedit */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "swift-libedit"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8B19CF21946F8D000664B90 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		D8B19CF91946F97900664B90 /* swift-libedit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "swift-libedit-Bridging-Header.h"; sourceTree = "<group>"; };
+		D8B19D011946FB8700664B90 /* Prompt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prompt.h; sourceTree = "<group>"; };
+		D8B19D021946FB8700664B90 /* Prompt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Prompt.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,9 @@
 			isa = PBXGroup;
 			children = (
 				D8B19CF21946F8D000664B90 /* main.swift */,
+				D8B19D011946FB8700664B90 /* Prompt.h */,
+				D8B19D021946FB8700664B90 /* Prompt.m */,
+				D8B19CF91946F97900664B90 /* swift-libedit-Bridging-Header.h */,
 			);
 			path = "swift-libedit";
 			sourceTree = "<group>";
@@ -119,6 +126,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8B19CF31946F8D000664B90 /* main.swift in Sources */,
+				D8B19D031946FB8700664B90 /* Prompt.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,6 +169,10 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				METAL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-ltermcap",
+					"-ledit",
+				);
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -196,6 +208,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				METAL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = (
+					"-ltermcap",
+					"-ledit",
+				);
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -203,14 +219,21 @@
 		D8B19CF71946F8D000664B90 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "swift-libedit/swift-libedit-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		D8B19CF81946F8D000664B90 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "swift-libedit/swift-libedit-Bridging-Header.h";
 			};
 			name = Release;
 		};
