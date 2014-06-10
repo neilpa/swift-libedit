@@ -10,14 +10,10 @@ import Foundation
 
 println("Prompt test")
 
-let prompt: Prompt = Prompt()
+let prompt: Prompt = Prompt(argv0: C_ARGV[0])
 
 while (true) {
     if let line = prompt.gets() {
         print("You typed \(line)")
-        
-        if line == "quit" {
-            break;
-        }
     }
 }

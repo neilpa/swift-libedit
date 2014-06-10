@@ -10,7 +10,7 @@
 
 #import <histedit.h>
 
-char * prompt(EditLine *e) {
+char* prompt(EditLine *e) {
     return "> ";
 }
 
@@ -20,14 +20,10 @@ EditLine* _el;
 History* _hist;
 HistEvent _ev;
 
-+ (instancetype) instance {
-    return [[self alloc] init];
-}
-
-- (instancetype) init {
+- (instancetype) initWithArgv0:(const char*)argv0 {
     if (self = [super init]) {
         // Setup the editor
-        _el = el_init("swift-libedit" /*TODO argv[0]*/, stdin, stdout, stderr);
+        _el = el_init(argv0, stdin, stdout, stderr);
         el_set(_el, EL_PROMPT, &prompt);
         el_set(_el, EL_EDITOR, "emacs");
         
